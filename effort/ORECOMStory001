@@ -1,0 +1,10 @@
+Story ID: ORECOMStory001
+
+Desc: Get all promotions for a given account
+
+API: GET /api/promotions/{accountId}
+
+Acceptance Criteria:
+- Return all promotions linked to the given account
+- Return 404 if no promotions are found
+
