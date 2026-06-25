@@ -1,0 +1,13 @@
+Story ID: ORECOMStory003
+
+Desc: Write a story to create a new api to get all products for a given account
+
+Acceptance Criteria:
+- Return all products linked to the given account
+- Return 404 if no products are found
+- Return 500 if any error occurs
+- Return 200 if products are found
+
+API: GET /api/products/{accountId}
+
+
