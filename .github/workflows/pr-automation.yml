@@ -32,11 +32,11 @@ jobs:
       - name: Parse story number from commit message
         id: parse
         run: |
-          # Look for patterns like: STORY-123, story-123, #123, [STORY-123]
+          # Look for patterns like: ORECOMStory123, [ORECOMStory123]
           COMMIT_MSG=$(git log --format="%s" -n 1 ${{ github.event.pull_request.head.sha }})
           echo "Commit message: $COMMIT_MSG"
 
-          STORY_ID=$(echo "$COMMIT_MSG" | grep -oiE '(STORY-[0-9]+|US-[0-9]+|#[0-9]+|\[?[A-Z]+-[0-9]+\]?)' | head -1 | tr -d '[]')
+          STORY_ID=$(echo "$COMMIT_MSG" | grep -oiE '(ORECOMStory[0-9]+|US-[0-9]+|#[0-9]+|\[?[A-Z]+-[0-9]+\]?)' | head -1 | tr -d '[]')
 
           if [ -z "$STORY_ID" ]; then
             echo "⚠️  No story number found in commit message: $COMMIT_MSG"
@@ -73,7 +73,7 @@ jobs:
   # STEP 2 — Validate acceptance criteria
   # ─────────────────────────────────────────────
   validate-acceptance-criteria:
-    name: Validate Story Acceptance Criteria
+    name: validate Story Acceptance Criteria
     runs-on: ubuntu-latest
     needs: extract-story
     if: needs.extract-story.outputs.story_id != ''
