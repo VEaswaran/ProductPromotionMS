@@ -21,6 +21,7 @@ public class PromotionController {
      * GET /api/promotions/{accountId}
      * Returns all promotions linked to the given account.
      * Responds with 404 when no promotions are found.
+     * Responds with 500 when an unexpected error occurs.
      */
     @GetMapping("/{accountId}")
     public ResponseEntity<List<Promotion>> getPromotionsByAccountId(
