@@ -57,7 +57,7 @@ jobs:
           echo "📁 Files changed: $FILE_COUNT"
 
           # Detect config-only changes
-          CONFIG_EXTENSIONS='\.(yml|yaml|json|xml|properties|env|toml|ini|conf)$'
+          CONFIG_EXTENSIONS='[.](yml|yaml|json|xml|properties|env|toml|ini|conf)$'
           NON_CONFIG=$(gh pr view ${{ github.event.pull_request.number }} \
             --json files --jq \
             "[.files[].path | select(test(\"$CONFIG_EXTENSIONS\") | not)] | length")
